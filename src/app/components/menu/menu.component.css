@@ -1,0 +1,64 @@
+nav {
+    position: relative;
+    top: 50%;
+    right: 0;
+    left: 0;
+    width: 319px;
+    display: table;
+    margin: auto;
+    margin-top: 50px;
+    transform: translateY(-50%);
+    backdrop-filter: blur(15px);
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    background-color: #CFD2CD;
+  }
+  
+  nav a {
+    position: relative;
+    width: 33.333%;
+    display: table-cell;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    padding: 10px 20px;
+  }
+  
+  nav a:before,
+  nav a:after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 0.2s ease transform;
+  }
+  
+  nav a:before {
+    top: 0;
+    left: 10px;
+    width: 6px;
+    height: 6px;
+  }
+  
+  nav a:after {
+    top: 5px;
+    left: 18px;
+    width: 4px;
+    height: 4px;
+  }
+
+  
+  nav a:hover {
+    scale: 1.1;
+  }
+  
+  nav a:hover:before,
+  nav a:hover:after {
+    transform: scale(1);
+  }
+  
