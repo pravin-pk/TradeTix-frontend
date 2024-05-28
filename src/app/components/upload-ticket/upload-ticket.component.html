@@ -1,0 +1,44 @@
+
+<div class="mainscreen">
+      <div class="card">
+        <div class="leftside">
+          <img
+            src="https://i.pinimg.com/originals/18/9d/dc/189ddc1221d9c1c779dda4ad37a35fa1.png"
+            class="product"
+            alt="Shoes"
+          />
+        </div>
+        <div class="rightside">
+          <form (ngSubmit)="uploadTicket()">
+            <h1>You have come this far!!</h1>
+            <h2>Let's Sell your tickets. Please verify before submitting</h2>
+            <p>Title</p>
+            <input type="text" class="inputbox" name="title" (ngModel)="title" required />
+            <p>Description</p>
+            <input type="text" class="inputbox" name="description" id="card_number" (ngModel)="description" required />
+
+            <p>Category</p>
+            <select class="inputbox" name="category" id="card_type" (ngModel)="category" required>
+              <option value="">--Select Category--</option>
+              <option value="Movie">Movie</option>
+              <option value="Party">Party</option>
+              <option value="idk">I Don't Know</option>
+            </select>
+
+            <p>Price</p>
+            <input type="number" class="inputbox" name="price" id="price" (ngModel)="price" required />
+
+            <div class="expcvv">
+                <p class="expcvv_text">Expiry</p>
+                <input type="datetime-local" class="inputbox" name="exp_date" id="exp_date" (ngModel)="expiryDate" required />
+            </div>
+
+            <p>Upload Image</p>
+            <input type="file" class="inputbox" name="image" id="image" (ngModel)="image"/>
+
+            <button type="submit" class="button">Upload</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  

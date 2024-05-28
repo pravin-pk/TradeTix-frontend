@@ -21,7 +21,7 @@
 					<a href="javascript:void(0)" (click)="getTickets('trending'); isUpload=false">Trending Tickets</a>
 					<a href="javascript:void(0)" (click)="getTickets('today'); isUpload=false">Today's Deal</a>
 					<a href="javascript:void(0)" (click)="getTickets('all'); isUpload=false">All Tickets</a>
-					<a href="javascript:void(0)" (click)="uploadTicket()">Upload Tickets</a>
+					<a href="javascript:void(0)" (click)="uploadTicket()">Sell Tickets</a>
 				</div>
 			</div>
 			<div *ngIf="!isUpload; else uploadComponent" class="content-main">
@@ -60,12 +60,6 @@
 
 		<!-- UPLOADING TICKETS COMPONENT -->
 		<ng-template #uploadComponent>
-			<div>
-				<ul>
-					<li>lkdjafldj</li>
-					<li>lkdjafldj</li>
-					<li>lkdjafldj</li>
-				</ul>
-			</div>
+			<app-upload-ticket></app-upload-ticket>
 		</ng-template>
 	</div>
