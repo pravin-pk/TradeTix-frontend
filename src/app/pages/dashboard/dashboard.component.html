@@ -1,44 +1,30 @@
 	<div class="responsive-wrapper">
         <app-menu></app-menu>
-		<!-- <div class="main-header">
-			<h1>Settings</h1>
+		<div class="main-header">
+			<h1>Welcome {{username}} </h1>
 			<div class="search">
 				<input type="text" placeholder="Search" />
 				<button type="submit">
 					<i class="ph-magnifying-glass-bold"></i>
 				</button>
 			</div>
-		</div> -->
-		<!-- <div class="horizontal-tabs">
-			<a href="#">My details</a>
-			<a href="#">Profile</a>
-			<a href="#">Password</a>
-			<a href="#">Team</a>
-			<a href="#">Plan</a>
-			<a href="#">Billing</a>
-			<a href="#">Email</a>
-			<a href="#">Notifications</a>
-			<a href="#" class="active">Integrations</a>
-			<a href="#">API</a>
-		</div> -->
+		</div>
 		<div class="content-header">
 			<div class="content-header-intro">
 				<h2>Today's Treding Tickets</h2>
-				<p>Supercharge your workflow and connect the tool you use every day.</p>
+				<p>lorem Ipsum.</p>
 			</div>
 		</div>
 		<div class="content">
 			<div class="content-panel">
 				<div class="vertical-tabs">
-					<a href="#" class="active">View all</a>
-					<a href="#">Developer tools</a>
-					<a href="#">Communication</a>
-					<a href="#">Productivity</a>
-					<a href="#">Browser tools</a>
-					<a href="#">Marketplace</a>
+					<a href="javascript:void(0)" (click)="getTickets('trending'); isUpload=false">Trending Tickets</a>
+					<a href="javascript:void(0)" (click)="getTickets('today'); isUpload=false">Today's Deal</a>
+					<a href="javascript:void(0)" (click)="getTickets('all'); isUpload=false">All Tickets</a>
+					<a href="javascript:void(0)" (click)="uploadTicket()">Upload Tickets</a>
 				</div>
 			</div>
-			<div class="content-main">
+			<div *ngIf="!isUpload; else uploadComponent" class="content-main">
 				<div class="card-grid">
 					<article class="card">
 						<div class="card-header">
@@ -54,75 +40,32 @@
 							<a href="javascript:void(0)" (click)="openDialog()">View Ticket</a>
 						</div>
 					</article>
-					<article class="card">
+					<article *ngFor="let ticket of tickets" class="card">
 						<div class="card-header">
 							<div>
-								<span><img src="https://assets.codepen.io/285131/github.svg" /></span>
-								<h3>GitHub</h3>
+								<span><img [src]="ticket.img" /></span>
+								<h3>{{ticket.name}}</h3>
 							</div>
 						</div>
 						<div class="card-body">
-							<p>Link pull requests and automate workflows.</p>
+							<p>{{ticket.desc}}.</p>
 						</div>
 						<div class="card-footer">
 							<a href="javascript:void(0)" (click)="openDialog()">View Ticket</a>
 						</div>
 					</article>
-					<article class="card">
-						<div class="card-header">
-							<div>
-								<span><img src="https://assets.codepen.io/285131/figma.svg" /></span>
-								<h3>Figma</h3>
-							</div>
-							<label class="toggle">
-								<input type="checkbox" checked>
-								<span></span>
-							</label>
-						</div>
-						<div class="card-body">
-							<p>Embed file previews in projects.</p>
-						</div>
-						<div class="card-footer">
-							<a href="#">View integration</a>
-						</div>
-					</article>
-					<article class="card">
-						<div class="card-header">
-							<div>
-								<span><img src="https://assets.codepen.io/285131/discord.svg" /></span>
-								<h3>Discord</h3>
-							</div>
-							<label class="toggle">
-								<input type="checkbox" checked>
-								<span></span>
-							</label>
-						</div>
-						<div class="card-body">
-							<p>Keep in touch with your customers without leaving the app.</p>
-						</div>
-						<div class="card-footer">
-							<a href="#">View integration</a>
-						</div>
-					</article>
-					<article class="card">
-						<div class="card-header">
-							<div>
-								<span><img src="https://assets.codepen.io/285131/google-drive.svg" /></span>
-								<h3>Google Drive</h3>
-							</div>
-							<label class="toggle">
-								<input type="checkbox">
-								<span></span>
-							</label>
-						</div>
-						<div class="card-body">
-							<p>Link your Google account to share files across your entire team.</p>
-						</div>
-						<div class="card-footer">
-							<a href="#">View integration</a>
-						</div>
-					</article>
 				</div>
 			</div>
 		</div>
+
+		<!-- UPLOADING TICKETS COMPONENT -->
+		<ng-template #uploadComponent>
+			<div>
+				<ul>
+					<li>lkdjafldj</li>
+					<li>lkdjafldj</li>
+					<li>lkdjafldj</li>
+				</ul>
+			</div>
+		</ng-template>
 	</div>
