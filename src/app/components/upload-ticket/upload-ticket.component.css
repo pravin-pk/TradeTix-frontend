@@ -5,7 +5,7 @@
     font-family: "Reddit Sans", sans-serif;
 	margin: auto;
 	padding:0;
-	width: 100%;
+	width: 50%;
 	display: flex;
 	box-sizing: border-box;
 }
@@ -25,7 +25,7 @@
 }
 
 .leftside {
-	background: #030303;
+	background: transparent;
 	width: 25rem;
 	display: inline-flex;
     align-items: center;
