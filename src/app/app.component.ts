@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../environments/environment.development';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,14 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
+  
+  constructor(private http: HttpClient) {}
 
-
+  ngOnInit() {
+    
+    this.http.get(`${environment.BACKEND_URL}/api/ping`).subscribe((data) => {
+      console.log(data);
+    });
+  }
 }
 

@@ -4,6 +4,7 @@ import { Routes, provideRouter } from '@angular/router';
 import { SignupComponent } from './pages/register/signup/signup.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { SigninComponent } from './pages/register/signin/signin.component';
+import { provideHttpClient } from '@angular/common/http';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -13,5 +14,5 @@ export const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent},
 ]
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes)]
+  providers: [provideRouter(routes), provideHttpClient()]
 };
