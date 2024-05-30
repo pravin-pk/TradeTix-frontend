@@ -1,13 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-
-declare const process: {
-  env: {
-    BACKEND_URL: string;
-  };
-};
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -21,8 +16,7 @@ export class AppComponent {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    
-    this.http.get(`${process.env.BACKEND_URL}/api/ping`).subscribe((data) => {
+    this.http.get(`${environment.BACKEND_URL}/api/ping`).subscribe((data) => {
       console.log(data);
     });
   }
