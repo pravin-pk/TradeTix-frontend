@@ -12,12 +12,14 @@ export class PaymentComponent {
 
   constructor(private winRef: WindowRefService) {}
 
+  amount: number | undefined;
+
   ngOnInit() {};
 
   populateRazorpay() {
     let options = {
       "key": "rzp_test_XdAHbKd78KTe3O",
-      "amount": "10000",
+      "amount": this.amount,
       "currency": "INR",
       "description": "Trade-Tix",
       "image": "example.com/image/rzp.jpg",

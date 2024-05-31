@@ -35,7 +35,11 @@ export class UploadTicketComponent {
     const token = this.cookie.get('token');
 
     // send ticket to backend
-    this.http.post(`${environment.BACKEND_URL}/api/tickets/upload`, this.ticket.value)
+    this.http.post(`${environment.BACKEND_URL}/api/tickets/upload`, this.ticket.value, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
       .subscribe((response: any) => {
         console.log(response);
         this.router.navigate(['/dashboard#my-tickets']);

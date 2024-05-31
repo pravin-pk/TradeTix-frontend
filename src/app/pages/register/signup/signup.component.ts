@@ -40,13 +40,13 @@ export class SignupComponent {
     this.http.post(`${environment.BACKEND_URL}/api/users/register`, formValues)
       .subscribe((response: any) => {
 
-        const token = response.loggedInUser.token;
-        const username = response.loggedInUser.user.username;
+        // const token = response.loggedInUser.token;
+        // const username = response.loggedInUser.user.username;
 
-        this.cookie.set('token', token);
-        this.cookie.set('username', username);
+        // this.cookie.set('token', token);
+        // this.cookie.set('username', username);
 
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/sign-in']);
       });
   }
 }

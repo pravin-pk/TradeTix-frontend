@@ -1,12 +1,6 @@
 	<div class="responsive-wrapper">
 		<div class="main-header">
 			<h1>Welcome {{username}} </h1>
-			<div class="search">
-				<input type="text" placeholder="Search" />
-				<button type="submit">
-					<i class="ph-magnifying-glass-bold"></i>
-				</button>
-			</div>
 		</div>
 		<!-- <div class="content-header">
 			<div class="content-header-intro">
@@ -14,40 +8,28 @@
 				<p>lorem Ipsum.</p>
 			</div>
 		</div> -->
+		<!-- HAVE TO PUT USER ICON HERE -->
 		<div class="content">
 			<div class="content-panel">
 				<div class="vertical-tabs">
 					<a href="javascript:void(0)" (click)="getTickets('trending'); isUpload=false">Trending Tickets</a>
 					<a href="javascript:void(0)" (click)="getTickets('today'); isUpload=false">Today's Deal</a>
 					<a href="javascript:void(0)" (click)="getTickets('all'); isUpload=false">All Tickets</a>
+					<a href="javascript:void(0)" (click)="getTickets('mine'); isUpload=false">My Tickets</a>
 					<a href="javascript:void(0)" (click)="uploadTicket()">Sell Tickets</a>
 				</div>
 			</div>
 			<div *ngIf="!isUpload; else uploadComponent" class="content-main">
 				<div class="card-grid">
-					<article class="card">
-						<div class="card-header">
-							<div>
-								<span><img src="https://assets.codepen.io/285131/zeplin.svg" /></span>
-								<h3>Zeplin</h3>
-							</div>
-						</div>
-						<div class="card-body">
-							<p>Collaboration between designers and developers.</p>
-						</div>
-						<div class="card-footer">
-							<a href="javascript:void(0)" (click)="openDialog()">View Ticket</a>
-						</div>
-					</article>
 					<article *ngFor="let ticket of tickets" class="card">
 						<div class="card-header">
 							<div>
 								<span><img [src]="ticket.img" /></span>
-								<h3>{{ticket.name}}</h3>
+								<h3>{{ticket.title}}</h3>
 							</div>
 						</div>
 						<div class="card-body">
-							<p>{{ticket.desc}}.</p>
+							<p><b>Date:</b> {{ticket.date}} and <b>Price:</b> {{ticket.price}}.</p>
 						</div>
 						<div class="card-footer">
 							<a href="javascript:void(0)" (click)="openDialog()">View Ticket</a>
