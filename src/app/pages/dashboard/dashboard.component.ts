@@ -4,6 +4,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { PopupComponent } from '../../components/popup/popup.component';
 import { CommonModule } from '@angular/common';
 import { UploadTicketComponent } from '../../components/upload-ticket/upload-ticket.component';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,7 +16,7 @@ import { UploadTicketComponent } from '../../components/upload-ticket/upload-tic
 })
 export class DashboardComponent {
 
-  username: string = 'ChadarmoD';
+  username: string = this.cookie.get('username');
   isUpload: boolean = false;
   tickets!: any[];
 
@@ -24,7 +26,7 @@ export class DashboardComponent {
     {name: 'z', img: 'https://xyz.com/img1.png', desc: 'lajdflas'},
   ];
 
-  constructor(private dialogRef: MatDialog){}
+  constructor(private dialogRef: MatDialog, private cookie: CookieService, private router: Router){}
 
   openDialog() {
     this.dialogRef.open(PopupComponent);
@@ -35,8 +37,10 @@ export class DashboardComponent {
   }
 
   ngOnInit() {
-    // call treding tickets api and assign the value to this.tickets
-    this.tickets = this.ticketsss;
+    if (!this.cookie.check('token')) {
+      this.router.navigate(['/sign-in']);
+    }
+    this.getTickets('trending');
   }
 
   getTickets(category: string) {
@@ -47,7 +51,7 @@ export class DashboardComponent {
 
   uploadTicket() {
     this.isUpload = true;
-    console.log('uploading ticket');
+    console.log('uploading ticket component loaded');
   }
 
 }

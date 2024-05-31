@@ -12,13 +12,6 @@ import { environment } from '../environments/environment';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  
-  constructor(private http: HttpClient) {}
 
-  ngOnInit() {
-    this.http.get(`${environment.BACKEND_URL}api/ping`).subscribe((data) => {
-      console.log(data);
-    });
-  }
 }
 

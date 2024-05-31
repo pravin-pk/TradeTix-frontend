@@ -9,16 +9,16 @@
           />
         </div>
         <div class="rightside">
-          <form (ngSubmit)="uploadTicket()">
+          <form (ngSubmit)="uploadTicket($event)" [formGroup]="ticket">
             <h1>You have come this far!!</h1>
             <h2>Let's Sell your tickets. Please verify before submitting</h2>
             <p>Title</p>
-            <input type="text" class="inputbox" name="title" (ngModel)="title" required />
+            <input type="text" class="inputbox" name="title" formControlName="title" required />
             <p>Description</p>
-            <input type="text" class="inputbox" name="description" id="card_number" (ngModel)="description" required />
+            <input type="text" class="inputbox" name="description" id="card_number" formControlName="description" required />
 
             <p>Category</p>
-            <select class="inputbox" name="category" id="card_type" (ngModel)="category" required>
+            <select class="inputbox" name="category" id="card_type" formControlName="category" required>
               <option value="">--Select Category--</option>
               <option value="Movie">Movie</option>
               <option value="Party">Party</option>
@@ -26,17 +26,17 @@
             </select>
 
             <p>Price</p>
-            <input type="number" class="inputbox" name="price" id="price" (ngModel)="price" required />
+            <input type="number" class="inputbox" name="price" id="price" formControlName="price" required />
 
             <div class="expcvv">
                 <p class="expcvv_text">Expiry</p>
-                <input type="datetime-local" class="inputbox" name="exp_date" id="exp_date" (ngModel)="expiryDate" required />
+                <input type="datetime-local" class="inputbox" name="exp_date" id="exp_date" formControlName="expiry" required />
             </div>
 
             <p>Upload Image</p>
-            <input type="file" class="inputbox" name="image" id="image" (ngModel)="image"/>
+            <input type="file" class="inputbox" name="image" id="image" formControlName="image"/>
 
-            <button type="submit" class="button">Upload</button>
+            <app-button></app-button>
           </form>
         </div>
       </div>
