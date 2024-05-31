@@ -183,11 +183,7 @@ img {
     font-weight: 600;
     line-height: 1.25;
   }
-  @media (max-width: 550px) {
-    .main-header h1 {
-      margin-bottom: 1rem;
-    }
-  }
+
   .search {
     position: relative;
     display: flex;

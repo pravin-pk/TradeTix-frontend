@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { WindowRefService } from '../../window-ref.service';
+import { TicketService } from '../../services/ticket.service';
 
 @Component({
   selector: 'app-payment',
@@ -10,7 +11,7 @@ import { WindowRefService } from '../../window-ref.service';
 })
 export class PaymentComponent {
 
-  constructor(private winRef: WindowRefService) {}
+  constructor(private winRef: WindowRefService, private ticketService: TicketService) {}
 
   amount: number | undefined;
 
@@ -19,7 +20,7 @@ export class PaymentComponent {
   populateRazorpay() {
     let options = {
       "key": "rzp_test_XdAHbKd78KTe3O",
-      "amount": this.amount,
+      "amount": this.ticketService.getTicketById(this.ticketService.getThisTicketId()).price * 100,
       "currency": "INR",
       "description": "Trade-Tix",
       "image": "example.com/image/rzp.jpg",

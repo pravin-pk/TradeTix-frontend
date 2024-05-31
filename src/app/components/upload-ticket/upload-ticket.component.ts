@@ -6,11 +6,12 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Expansion } from '@angular/compiler';
 import { environment } from '../../../environments/environment';
+import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
 
 @Component({
   selector: 'app-upload-ticket',
   standalone: true,
-  imports: [FormsModule, ButtonComponent, ReactiveFormsModule],
+  imports: [FormsModule, ButtonComponent, ReactiveFormsModule, DashboardComponent],
   templateUrl: './upload-ticket.component.html',
   styleUrl: './upload-ticket.component.css'
 })
@@ -21,28 +22,25 @@ export class UploadTicketComponent {
   ticket = new FormGroup({
     title: new FormControl(''),
     description: new FormControl(''),
-    category: new FormControl(''),
     price:  new FormControl(''),
     expiry: new FormControl(''),
-    image: new FormControl('')
   })
 
   uploadTicket(event: Event) {
     event.preventDefault();
     console.log('uploading ticket');
-    console.log(this.ticket.value);
 
     const token = this.cookie.get('token');
 
     // send ticket to backend
-    this.http.post(`${environment.BACKEND_URL}/api/tickets/upload`, this.ticket.value, {
+    this.http.post(`${environment.BACKEND_URL}/api/tickets`, this.ticket.value, {
       headers: {
         Authorization: `Bearer ${token}`
       }
     })
       .subscribe((response: any) => {
         console.log(response);
-        this.router.navigate(['/dashboard#my-tickets']);
+        DashboardComponent.prototype.getTickets('mine');
       });
   }
 

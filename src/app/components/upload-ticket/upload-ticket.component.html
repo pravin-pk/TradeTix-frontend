@@ -17,13 +17,13 @@
             <p>Description</p>
             <input type="text" class="inputbox" name="description" id="card_number" formControlName="description" required />
 
-            <p>Category</p>
+            <!-- <p>Category</p>
             <select class="inputbox" name="category" id="card_type" formControlName="category" required>
               <option value="">--Select Category--</option>
               <option value="Movie">Movie</option>
               <option value="Party">Party</option>
               <option value="idk">I Don't Know</option>
-            </select>
+            </select> -->
 
             <p>Price</p>
             <input type="number" class="inputbox" name="price" id="price" formControlName="price" required />
@@ -32,9 +32,6 @@
                 <p class="expcvv_text">Expiry</p>
                 <input type="datetime-local" class="inputbox" name="exp_date" id="exp_date" formControlName="expiry" required />
             </div>
-
-            <p>Upload Image</p>
-            <input type="file" class="inputbox" name="image" id="image" formControlName="image"/>
 
             <app-button></app-button>
           </form>

@@ -1,6 +1,7 @@
 	<div class="responsive-wrapper">
 		<div class="main-header">
 			<h1>Welcome {{username}} </h1>
+			<app-settings></app-settings>
 		</div>
 		<!-- <div class="content-header">
 			<div class="content-header-intro">
@@ -8,15 +9,14 @@
 				<p>lorem Ipsum.</p>
 			</div>
 		</div> -->
-		<!-- HAVE TO PUT USER ICON HERE -->
 		<div class="content">
 			<div class="content-panel">
 				<div class="vertical-tabs">
-					<a href="javascript:void(0)" (click)="getTickets('trending'); isUpload=false">Trending Tickets</a>
-					<a href="javascript:void(0)" (click)="getTickets('today'); isUpload=false">Today's Deal</a>
-					<a href="javascript:void(0)" (click)="getTickets('all'); isUpload=false">All Tickets</a>
-					<a href="javascript:void(0)" (click)="getTickets('mine'); isUpload=false">My Tickets</a>
-					<a href="javascript:void(0)" (click)="uploadTicket()">Sell Tickets</a>
+					<a href="javascript:void(0)" (click)="getTickets('trending'); isUpload=false" [class.active]="isTrending">Trending Tickets</a>
+					<a href="javascript:void(0)" (click)="getTickets('today'); isUpload=false" [class.active]="isToday">Today's Deal</a>
+					<a href="javascript:void(0)" (click)="getTickets('all'); isUpload=false" [class.active]="isAll">All Tickets</a>
+					<a href="javascript:void(0)" (click)="getTickets('mine'); isUpload=false" [class.active]="isMine">My Tickets</a>
+					<a href="javascript:void(0)" (click)="uploadTicket()" [class.active]="isUpload">Sell Tickets</a>
 				</div>
 			</div>
 			<div *ngIf="!isUpload; else uploadComponent" class="content-main">
@@ -29,10 +29,10 @@
 							</div>
 						</div>
 						<div class="card-body">
-							<p><b>Date:</b> {{ticket.date}} and <b>Price:</b> {{ticket.price}}.</p>
+							<p><b>Date: {{ticket.date}} <br> Price: {{ticket.price}}</b></p>
 						</div>
 						<div class="card-footer">
-							<a href="javascript:void(0)" (click)="openDialog()">View Ticket</a>
+							<a href="javascript:void(0)" (click)="openDialog(ticket.id)">View Ticket</a>
 						</div>
 					</article>
 				</div>
@@ -43,4 +43,9 @@
 		<ng-template #uploadComponent>
 			<app-upload-ticket></app-upload-ticket>
 		</ng-template>
+
+		<ng-template #accountUpdate>
+			<app-account></app-account>
+		</ng-template>
+
 	</div>

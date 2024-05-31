@@ -33,9 +33,10 @@ export class SigninComponent {
 
     this.http.post(`${environment.BACKEND_URL}/api/users/login`, formValues)
       .subscribe((response: any) => {
+        console.log(response);
         
-        const token = response.loggedInUser.token;
-        const username = response.loggedInUser.user.username;
+        const token = response.data.token;
+        const username = response.data.user.username;
 
         this.cookie.set('token', token);
         this.cookie.set('username', username);
