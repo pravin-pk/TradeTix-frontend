@@ -61,8 +61,14 @@ export class DashboardComponent {
     this.isOwned = what === 'owned';
     this.isBought = what === 'bought';
 
+
     if (this.isOwned || this.isBought) {
-      this.getMyTickets();
+      let param: string;
+      if (this.isOwned) {
+        this.getMyTickets('owner');
+      } else {
+        this.getMyTickets('buyer');
+      }
     }
     else {
 
@@ -87,23 +93,27 @@ export class DashboardComponent {
 
   }
 
-  getMyTickets() {
+  getMyTickets(param: string) {
     console.log('getting my tickets');
-    // this.http.get(`${environment.BACKEND_URL}/api/tickets/myTickets`, {
-    //   headers: {
-    //     Authorization: `Bearer ${this.cookie.get('token')}`
-    //   }
-    // })
-    //   .subscribe((response: any) => {
-    //     const data = response.data;
+    this.http.get(`${environment.BACKEND_URL}/api/tickets/me`, {
+      headers: {
+        Authorization: `Bearer ${this.cookie.get('token')}`
+      }, 
+      params: {
+        user: param
+      }
+    })
+      .subscribe((response: any) => {
+        console.log(response);
+        const data = response.data;
 
-    //     this.tickets = [];
-    //     data.forEach((ticket: any) => {
-    //       console.log(ticket._id);
-    //       this.tickets.push({id: ticket._id, title: ticket.title, img: '../../assets/images/ticket.png', price: ticket.price, date: this.ticketService.convertDate(ticket.expiry)});
-    //       this.ticketService.addTicket(ticket);
-    //     });
-    //   });
+        this.tickets = [];
+        data.forEach((ticket: any) => {
+          console.log(ticket._id);
+          this.tickets.push({id: ticket._id, title: ticket.title, img: '../../assets/images/ticket.png', price: ticket.price, date: this.ticketService.convertDate(ticket.expiry)});
+          this.ticketService.addTicket(ticket);
+        });
+      });
   }
 
   uploadTicket() {
