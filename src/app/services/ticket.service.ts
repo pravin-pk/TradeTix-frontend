@@ -43,4 +43,10 @@ export class TicketService {
     this.thisTicketId = '';
   }
 
+  // GETTING ALL TICKETS
+
+  getAllTickets() {
+    return this.tickets;
+  }
+
 }

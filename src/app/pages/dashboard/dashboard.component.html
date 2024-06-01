@@ -14,7 +14,8 @@
 				<div class="vertical-tabs">
 					<a href="javascript:void(0)" (click)="getTickets('today'); isUpload=false" [class.active]="isToday">Today's Deal</a>
 					<a href="javascript:void(0)" (click)="getTickets('all'); isUpload=false" [class.active]="isAll">All Tickets</a>
-					<a href="javascript:void(0)" (click)="getTickets('mine'); isUpload=false" [class.active]="isMine">My Tickets</a>
+					<a href="javascript:void(0)" (click)="getTickets('owned'); isUpload=false" [class.active]="isOwned">Owned by me</a>
+					<a href="javascript:void(0)" (click)="getTickets('bought'); isUpload=false" [class.active]="isBought">Bought by me</a>
 					<a href="javascript:void(0)" (click)="uploadTicket()" [class.active]="isUpload">Sell Tickets</a>
 				</div>
 			</div>
@@ -25,6 +26,9 @@
 							<div>
 								<span><img [src]="ticket.img" /></span>
 								<h3>{{ticket.title}}</h3>
+							</div>
+							<div *ngIf="isOwned">
+								<span (click)="deleteTicket(ticket.id)"><img src="../../../assets/images/delete.png" /></span>
 							</div>
 						</div>
 						<div class="card-body">

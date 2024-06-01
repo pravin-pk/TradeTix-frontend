@@ -17,7 +17,7 @@ import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
 })
 export class UploadTicketComponent {
 
-  constructor(private http: HttpClient, private router: Router, private cookie: CookieService) { }
+  constructor(private http: HttpClient, private router: Router, private cookie: CookieService, private dashboard: DashboardComponent) { }
 
   ticket = new FormGroup({
     title: new FormControl(''),
@@ -39,8 +39,8 @@ export class UploadTicketComponent {
       }
     })
       .subscribe((response: any) => {
-        console.log(response);
-        DashboardComponent.prototype.getTickets('mine');
+        alert('Ticket uploaded successfully!');
+        this.dashboard.getTickets('mine');
       });
   }
 

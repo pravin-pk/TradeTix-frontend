@@ -28,7 +28,8 @@ export class DashboardComponent {
   
   isToday: boolean = false;
   isAll : boolean = false;
-  isMine: boolean = false;
+  isOwned: boolean = false;
+  isBought: boolean = false;
   isUpload: boolean = false;
 
 
@@ -52,10 +53,18 @@ export class DashboardComponent {
 
   getTickets(what: string) {
     console.log(`getting tickets for ${what}`);
+    
+    this.isUpload = false;
 
     this.isToday = what === 'today';
     this.isAll = what === 'all';
-    this.isMine = what === 'mine';
+    this.isOwned = what === 'owned';
+    this.isBought = what === 'bought';
+
+    if (this.isOwned || this.isBought) {
+      this.getMyTickets();
+    }
+    else {
 
     this.http.get(`${environment.BACKEND_URL}/api/tickets/open`, {
       headers: {
@@ -74,14 +83,35 @@ export class DashboardComponent {
           this.ticketService.addTicket(ticket);
         });
       });
+    }
 
+  }
+
+  getMyTickets() {
+    console.log('getting my tickets');
+    // this.http.get(`${environment.BACKEND_URL}/api/tickets/myTickets`, {
+    //   headers: {
+    //     Authorization: `Bearer ${this.cookie.get('token')}`
+    //   }
+    // })
+    //   .subscribe((response: any) => {
+    //     const data = response.data;
+
+    //     this.tickets = [];
+    //     data.forEach((ticket: any) => {
+    //       console.log(ticket._id);
+    //       this.tickets.push({id: ticket._id, title: ticket.title, img: '../../assets/images/ticket.png', price: ticket.price, date: this.ticketService.convertDate(ticket.expiry)});
+    //       this.ticketService.addTicket(ticket);
+    //     });
+    //   });
   }
 
   uploadTicket() {
     this.isUpload = true;
     this.isToday = false;
     this.isAll = false;
-    this.isMine = false;
+    this.isOwned = false;
+    this.isBought = false;
     
     console.log('uploading ticket component loaded');
   }
@@ -99,6 +129,22 @@ export class DashboardComponent {
       console.log(response);
     })
     this.router.navigate(['/home']);
+  }
+
+  deleteTicket(id: string) {
+    console.log(`deleting ticket ${id}`);
+
+    this.http.delete(`${environment.BACKEND_URL}/api/tickets/${id}`, {
+      headers: {
+        Authorization: `Bearer ${this.cookie.get('token')}`
+      }
+    })
+      .subscribe((response: any) => {
+        console.log(response);
+        alert('Ticket deleted successfully');
+        this.isOwned = false;
+        this.ngOnInit();
+      });
   }
 
 }

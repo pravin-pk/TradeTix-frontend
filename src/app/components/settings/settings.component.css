@@ -1,0 +1,20 @@
+/* Button styling */
+.custom-button {
+    display: inline-block;
+    padding: 8px 16px; /* Reduced padding */
+    font-size: 14px; /* Reduced font size */
+    font-weight: bold;
+    color: #fff;
+    background-color: #404089;; /* Blue color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .custom-button:hover {
+    background-color: #434ce8; /* Darker blue color on hover */
+  }
+  
