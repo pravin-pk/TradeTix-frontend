@@ -26,7 +26,6 @@ export class DashboardComponent {
   tickets!: any[];
   ticketsss: any[] = []
   
-  isTrending: boolean = true;
   isToday: boolean = false;
   isAll : boolean = false;
   isMine: boolean = false;
@@ -54,7 +53,6 @@ export class DashboardComponent {
   getTickets(what: string) {
     console.log(`getting tickets for ${what}`);
 
-    this.isTrending = what === 'trending';
     this.isToday = what === 'today';
     this.isAll = what === 'all';
     this.isMine = what === 'mine';
@@ -81,7 +79,6 @@ export class DashboardComponent {
 
   uploadTicket() {
     this.isUpload = true;
-    this.isTrending = false;
     this.isToday = false;
     this.isAll = false;
     this.isMine = false;

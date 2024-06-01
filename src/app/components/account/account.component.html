@@ -1,27 +1,22 @@
-
-<div class="mainscreen">
-    <div class="card">
-      <div class="leftside">
-        <img
-          src="../../../assets/gifs/tix.gif"
-          class="product"
-          alt="illustration of a ticket"
-        />
-      </div>
-      <div class="rightside">
-        <!-- <form (ngSubmit)="uploadTicket($event)" [formGroup]="ticket">
-          <h1>You have come this far!!</h1>
-          <h2>Let's Sell your tickets. Please verify before submitting</h2>
-          <p>Name</p>
-          <input type="text" class="inputbox" name="title" formControlName="title" required />
-          <p>Bank Account Numbeer</p>
-          <input type="text" class="inputbox" name="description" id="card_number" formControlName="description" required />
-          <p>IFSC Coder</p>
-          <input type="text" class="inputbox" name="description" id="card_number" formControlName="description" required />
-          
-
-        </form> -->
-      </div>
-    </div>
+<div class="popup" id="popup">
+	<div class="popup-inner">
+	<!-- <div class="popup__photo">
+		<img src="http://via.placeholder.com/640x360" alt="">
+	</div> -->
+	<div class="popup__text">
+    <div class="container">
+      <h2>Hi {{username}}, Your Bank Account Details</h2>
+      <button class="close-btn" (click)="closeDialog()">X</button>
+      <form (ngSubmit)="updateBankDetails($event)" [formGroup]="bankForm">
+          <div class="form-group">
+              <label for="account-number">Bank Account Number:</label>
+              <input type="text" id="account-number" name="account-number" placeholder="Enter your bank account number" formControlName="accountNumber" [(ngModel)]="accNo" required>
+          </div>
+          <div class="form-group">
+              <label for="account-number">Bank IFSC Code</label>
+              <input type="text" id="account-number" name="account-number" placeholder="Enter your bank IFSC code" formControlName="IFSCCode" [(ngModel)]="ifsc" required>
+          </div>
+          <input type="submit" value="Submit">
+      </form>
   </div>
-
+</div>

@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { environment } from '../../../environments/environment';
+import { MatDialog } from '@angular/material/dialog';
+import { AccountComponent } from '../account/account.component';
 
 @Component({
   selector: 'app-settings',
@@ -13,7 +15,7 @@ import { environment } from '../../../environments/environment';
 })
 export class SettingsComponent {
 
-  constructor(private cookie: CookieService, private http: HttpClient, private router: Router) { }
+  constructor(private cookie: CookieService, private http: HttpClient, private router: Router, private dialogRef: MatDialog) { }
 
   logout() {
 
@@ -28,6 +30,10 @@ export class SettingsComponent {
       console.log(response);
     })
     this.router.navigate(['/home']);
+  }
+
+  openAccount() {
+    this.dialogRef.open(AccountComponent);
   }
 
 }
