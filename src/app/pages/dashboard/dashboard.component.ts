@@ -100,7 +100,7 @@ export class DashboardComponent {
         Authorization: `Bearer ${this.cookie.get('token')}`
       }, 
       params: {
-        user: param
+        userType: param
       }
     })
       .subscribe((response: any) => {
