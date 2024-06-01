@@ -69,7 +69,7 @@ export class PaymentComponent {
     this.http.patch(`${environment.BACKEND_URL}/api/tickets/${ticketId}/buy`, {
       headers: {
         Authorization: `Bearer ${this.cookie.get('token')}`
-      },
+      }
     })
     .subscribe((res) => {
       console.log(res);
