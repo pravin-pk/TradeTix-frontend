@@ -6,7 +6,6 @@
             <h1 class="opacity">SIGN-UP</h1>
             <form (ngSubmit)="signupUser($event)" [formGroup]="signupForm">
                 <input type="text" placeholder="USERNAME" formControlName="username"  />
-                <input type="text" placeholder="NAME"  formControlName="name"/>
                 <input type="email" placeholder="EMAIL" formControlName="email" />
                 <input type="password" placeholder="PASSWORD" formControlName="password" />
                 <button type="submit" class="opacity" [disabled]="signupForm.invalid">SUBMIT</button>

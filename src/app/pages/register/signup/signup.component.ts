@@ -32,7 +32,6 @@ export class SignupComponent {
 
     const formValues = {
       username: this.signupForm.controls.username.value,
-      name: this.signupForm.controls.name.value,
       email: this.signupForm.controls.email.value,
       password: this.signupForm.controls.password.value
     };
