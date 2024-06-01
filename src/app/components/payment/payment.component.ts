@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { WindowRefService } from '../../window-ref.service';
 import { TicketService } from '../../services/ticket.service';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-payment',
@@ -11,7 +14,7 @@ import { TicketService } from '../../services/ticket.service';
 })
 export class PaymentComponent {
 
-  constructor(private winRef: WindowRefService, private ticketService: TicketService) {}
+  constructor(private winRef: WindowRefService, private ticketService: TicketService, private http: HttpClient, private cookie: CookieService) {}
 
   amount: number | undefined;
 
@@ -40,6 +43,7 @@ export class PaymentComponent {
       },
       "handler":  (response: any) => {
         alert(response.razorpay_payment_id);
+        this.completePayment();
       },
       "modal": {
         "ondismiss": function () {
@@ -57,6 +61,20 @@ export class PaymentComponent {
   makePayment() {
     const rzp = new this.winRef.nativeWindow.Razorpay(this.populateRazorpay());
     rzp.open();
+  }
+
+  completePayment() {
+    const ticketId = this.ticketService.getThisTicketId();
+
+    this.http.patch(`${environment.BACKEND_URL}/api/tickets/${ticketId}/buy`, {
+      headers: {
+        Authorization: `Bearer ${this.cookie.get('token')}`
+      },
+    })
+    .subscribe((res) => {
+      console.log(res);
+    });
+
   }
 }
 
