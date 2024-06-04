@@ -19,9 +19,9 @@
 					<a href="javascript:void(0)" (click)="uploadTicket()" [class.active]="isUpload">Sell Tickets</a>
 				</div>
 			</div>
-			<div *ngIf="!isUpload; else uploadComponent" class="content-main">
+			<div *ngIf="!isUpload; else uploadComponent" class="content-main" >
 				<div class="card-grid">
-					<article *ngFor="let ticket of tickets" class="card">
+					<article *ngFor="let ticket of tickets" class="card" (click)="openDialog(ticket.id)">
 						<div class="card-header">
 							<div>
 								<span><img [src]="ticket.img" /></span>
@@ -35,7 +35,7 @@
 							<p><b>Date: {{ticket.date}} <br> Price: {{ticket.price}} INR</b></p>
 						</div>
 						<div class="card-footer">
-							<a href="javascript:void(0)" (click)="openDialog(ticket.id)">View Ticket</a>
+							<!-- <a href="javascript:void(0)" (click)="openDialog(ticket.id)">View Ticket</a> -->
 						</div>
 					</article>
 				</div>
