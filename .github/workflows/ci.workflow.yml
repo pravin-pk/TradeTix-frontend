@@ -2,9 +2,9 @@ name: Continuous Integration Workflow
 
 on:
   push:
-    branches: [ "*" ]
-  pull_request:
     branches: [ "main" ]
+  pull_request:
+    types: [opened, reopened]
 
 jobs:
   build-ubuntu:
@@ -57,3 +57,17 @@ jobs:
       - run: npm ci
       - run: npm run build --if-present
       # - run: npm test
+
+
+  sonarqube-check:
+    name: Build and analyze
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth:
+      - uses: sonarsource/sonarqube-scan-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
