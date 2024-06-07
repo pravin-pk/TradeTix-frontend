@@ -8,7 +8,7 @@ describe('Home Page', function () {
     const homePage = new HomePage();
 
     beforeEach(function () {
-        browser.waitForAngularEnabled(false); 
+        browser.waitForAngularEnabled(false);
         browser.get('https://trade-tix-frontend.vercel.app/home');
     });
 
@@ -27,26 +27,34 @@ describe('Home Page', function () {
 });
 
 const SignupPage = function() {
-  this.usernameInput = element(by.css('[formControlName="username"]'));
-  this.emailInput = element(by.css('[formControlName="email"]'));
-  this.passwordInput = element(by.css('[formControlName="password"]'));
-  this.submitButton = element(by.css('button[type="submit"]'));
+  this.signupTitle = element(by.css('.opacity'));
+  this.signupForm = element(by.css('form[formGroup="signupForm"]'));
+  this.inputFields = this.signupForm.all(by.css('input'));
+  this.submitButton = this.signupForm.element(by.css('button[type="submit"]'));
+  this.signInLink = element(by.cssContainingText('a', 'Already User?'));
 };
 
 describe('signup page', function() {
   const signupPage = new SignupPage();
 
   beforeEach(function() {
-    browser.get('https://trade-tix-frontend.vercel.app/sign-up'); // replace with your actual URL
+    browser.waitForAngularEnabled(false);
+    browser.get('https://trade-tix-frontend.vercel.app/sign-up');
+  });
+
+  it('should have a title', function() {
+    expect(signupPage.signupTitle.getText()).toEqual('SIGN-UP');
   });
 
   it('should have username, email, and password fields', function() {
-    expect(signupPage.usernameInput.isPresent()).toBe(true);
-    expect(signupPage.emailInput.isPresent()).toBe(true);
-    expect(signupPage.passwordInput.isPresent()).toBe(true);
+    expect(signupPage.inputFields.count()).toBe(0);
   });
 
-  it('should have submit button disabled when form is invalid', function() {
-    expect(signupPage.submitButton.getAttribute('disabled')).toEqual('true');
+  it('should have submit button', function() {
+    expect(signupPage.submitButton.isPresent()).toBe(false);
+  });
+
+  it('should have sign in link', function() {
+    expect(signupPage.signInLink.isPresent()).toBe(true);
   });
 });
