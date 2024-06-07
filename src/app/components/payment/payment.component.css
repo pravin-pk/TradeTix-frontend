@@ -28,12 +28,15 @@
     font-size: 14px;
     font-weight: 400;
     line-height: 45px;
-    max-width: 160px;
-    position: relative;
+    max-width: 120px;
+    position: absolute;
     text-decoration: none;
     text-transform: uppercase;
     width: 100%;
-  }
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+}
   .btn:hover {
     text-decoration: none;
   }

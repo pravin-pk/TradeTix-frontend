@@ -355,12 +355,13 @@ img {
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    cursor: pointer;
   }
   .card-header {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    padding: 1.5rem 1.25rem 1rem 1.25rem;
+    padding: 0.5rem 1.25rem 0.5rem 1.25rem;
   }
   .card-header div {
     display: flex;
@@ -423,7 +424,7 @@ img {
     box-shadow: 0 0 0 4px #ecf3fe;
   }
   .card-body {
-    padding: 1rem 1.25rem;
+    padding: 0.1rem 1.25rem;
     font-size: 0.875rem;
   }
   .card-footer {
