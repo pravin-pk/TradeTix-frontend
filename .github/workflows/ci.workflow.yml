@@ -60,7 +60,7 @@ jobs:
 
 
   sonarqube-check:
-    name: Build and analyze
+    name: SonarQube Check
     runs-on: ubuntu-latest
     
     steps:
