@@ -41,6 +41,7 @@ export class TicketService {
 
   removeThisTicketId() {
     this.thisTicketId = '';
+    return null;
   }
 
   // GETTING ALL TICKETS

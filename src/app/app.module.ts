@@ -5,6 +5,7 @@ import { routes } from './app.config';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,7 +17,7 @@ import { CookieService } from 'ngx-cookie-service';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [CookieService],
+  providers: [CookieService, provideHttpClient()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
