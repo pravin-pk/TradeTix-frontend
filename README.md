@@ -1,6 +1,19 @@
 # Trade-Tix
 
+> ## **💰Why let your tickets go to waste? Sell it on TradeTix!**
+
+### **"TradeTix is a user-friendly web app where you can sell ticketsyou’re unable to utilize. Easily find a new home for your tickets or grab last-minute deals from other users."**
+
+
+![1717829741029](image/README/1717829741029.png)
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.7.
+
+## Architecture
+
+![1717829846646](image/README/1717829846646.png)
+
 
 ## Development server
 
