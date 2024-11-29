@@ -1,4 +1,4 @@
 export const environment = {
     production: false,
-    BACKEND_URL: 'http://tradetix.dev.api.c-25bff2c.kyma.ondemand.com',
+    BACKEND_URL: 'http://tradetix.api.add2f90.kyma.ondemand.com',
 };

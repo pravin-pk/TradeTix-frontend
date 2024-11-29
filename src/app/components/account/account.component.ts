@@ -18,6 +18,7 @@ export class AccountComponent {
 
   accNo: string = '';
   ifsc: string = '';
+  ethWallet: string = '';
 
   constructor(private dialogRef: MatDialog, private http: HttpClient, private cookie: CookieService) {}
 
@@ -35,11 +36,25 @@ export class AccountComponent {
   bankForm = new FormGroup({
     accountNumber: new FormControl(''),
     IFSCCode: new FormControl(''),
+    ethereumWallet: new FormControl(''),
   })
 
   closeDialog() {
     this.dialogRef.closeAll();
   }
+
+// openDialog(): void {
+//   const popup = document.getElementById('popup');
+//   const overlay = document.getElementById('overlay');
+//
+//   if (popup && !popup.classList.contains('show')) {
+//     popup.classList.add('show');
+//   }
+//
+//   if (overlay && !overlay.classList.contains('show')) {
+//     overlay.classList.add('show');
+//   }
+// }
 
   updateBankDetails(event: Event) {
     event.preventDefault();

@@ -1,22 +1,24 @@
 <div class="popup" id="popup">
-	<div class="popup-inner">
-	<!-- <div class="popup__photo">
-		<img src="http://via.placeholder.com/640x360" alt="">
-	</div> -->
-	<div class="popup__text">
-    <div class="container">
-      <h2>Hi {{username}}, Your Bank Account Details</h2>
-      <button class="close-btn" (click)="closeDialog()">X</button>
-      <form (ngSubmit)="updateBankDetails($event)" [formGroup]="bankForm">
+  <div class="popup-inner">
+    <div class="popup__text">
+      <div class="container">
+        <h2>Hi {{username}}, Your Bank Account Details</h2>
+        <button class="close-btn" (click)="closeDialog()">X</button>
+        <form (ngSubmit)="updateBankDetails($event)" [formGroup]="bankForm">
           <div class="form-group">
-              <label for="account-number">Bank Account Number:</label>
-              <input type="text" id="account-number" name="account-number" placeholder="Enter your bank account number" formControlName="accountNumber" [(ngModel)]="accNo" required>
+            <label for="account-number">Bank Account Number:</label>
+            <input type="text" id="account-number" name="account-number" placeholder="Enter your bank account number" formControlName="accountNumber" [(ngModel)]="accNo" required>
           </div>
           <div class="form-group">
-              <label for="account-number">Bank IFSC Code</label>
-              <input type="text" id="account-number" name="account-number" placeholder="Enter your bank IFSC code" formControlName="IFSCCode" [(ngModel)]="ifsc" required>
+            <label for="account-number">Bank IFSC Code</label>
+            <input type="text" id="account-number" name="account-number" placeholder="Enter your bank IFSC code" formControlName="IFSCCode" [(ngModel)]="ifsc" required>
+          </div>
+          <div class="form-group">
+            <label for="ethereum-wallet">Ethereum Wallet Address</label>
+            <input type="text" id="ethereum-wallet" name="ethereum-wallet" placeholder="Enter your Ethereum wallet address" formControlName="ethereumWallet" [(ngModel)]="ethWallet" required>
           </div>
           <input type="submit" value="Submit">
-      </form>
+        </form>
+      </div>
+    </div>
   </div>
-</div>

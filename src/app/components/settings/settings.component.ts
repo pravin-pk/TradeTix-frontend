@@ -20,7 +20,7 @@ export class SettingsComponent {
   logout() {
 
     const token = this.cookie.get('token');
-    
+
     this.cookie.deleteAll();
     this.http.post(`${environment.BACKEND_URL}/api/users/logout`, {}, {
       headers: {
@@ -33,6 +33,7 @@ export class SettingsComponent {
   }
 
   openAccount() {
+    this.dialogRef.closeAll();
     this.dialogRef.open(AccountComponent);
   }
 
