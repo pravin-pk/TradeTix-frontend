@@ -25,7 +25,8 @@ export class AccountComponent {
   ngOnInit() {
     this.http.get(`${environment.BACKEND_URL}/api/users/me`, {
       headers: {
-        Authorization: `Bearer ${this.cookie.get('token')}`
+        Authorization: `Bearer ${this.cookie.get('token')}`,
+        'Access-Control-Allow-Origin': '*'
       }
     }).subscribe((response: any) => {
       this.accNo = response.data.accountNumber;
@@ -65,7 +66,8 @@ export class AccountComponent {
 
     this.http.post(`${environment.BACKEND_URL}/api/users/${userId}/bank-details`, this.bankForm.value, {
       headers: {
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
+      'Access-Control-Allow-Origin': '*'
       },
     }).subscribe((response: any) => {
       console.log(response);

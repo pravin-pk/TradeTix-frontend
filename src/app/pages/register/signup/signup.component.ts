@@ -36,7 +36,11 @@ export class SignupComponent {
       password: this.signupForm.controls.password.value
     };
 
-    this.http.post(`${environment.BACKEND_URL}/api/users/register`, formValues)
+    this.http.post(`${environment.BACKEND_URL}/api/users/register`, formValues, {
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
+    })
       .subscribe((response: any) => {
 
         // const token = response.loggedInUser.token;

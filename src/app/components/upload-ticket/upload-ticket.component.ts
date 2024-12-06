@@ -35,7 +35,8 @@ export class UploadTicketComponent {
     // send ticket to backend
     this.http.post(`${environment.BACKEND_URL}/api/tickets`, this.ticket.value, {
       headers: {
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
+        'Access-Control-Allow-Origin': '*'
       }
     })
       .subscribe((response: any) => {

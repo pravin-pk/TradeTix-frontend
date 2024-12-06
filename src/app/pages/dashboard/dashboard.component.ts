@@ -74,7 +74,8 @@ export class DashboardComponent {
 
     this.http.get(`${environment.BACKEND_URL}/api/tickets/open`, {
       headers: {
-        Authorization: `Bearer ${this.cookie.get('token')}`
+        Authorization: `Bearer ${this.cookie.get('token')}`,
+        'Access-Control-Allow-Origin': '*'
       }
     
     })
@@ -97,7 +98,8 @@ export class DashboardComponent {
     console.log('getting my tickets');
     this.http.get(`${environment.BACKEND_URL}/api/tickets/me`, {
       headers: {
-        Authorization: `Bearer ${this.cookie.get('token')}`
+        Authorization: `Bearer ${this.cookie.get('token')}`,
+        'Access-Control-Allow-Origin': '*'
       }, 
       params: {
         userType: param
@@ -133,7 +135,8 @@ export class DashboardComponent {
     this.cookie.deleteAll();
     this.http.post(`${environment.BACKEND_URL}/api/users/logout`, {}, {
       headers: {
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
+        'Access-Control-Allow-Origin': '*'
       }
     }).subscribe((response: any) => {
       console.log(response);

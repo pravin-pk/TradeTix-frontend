@@ -24,7 +24,8 @@ export class SettingsComponent {
     this.cookie.deleteAll();
     this.http.post(`${environment.BACKEND_URL}/api/users/logout`, {}, {
       headers: {
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
+        'Access-Control-Allow-Origin': '*'
       }
     }).subscribe((response: any) => {
       console.log(response);
