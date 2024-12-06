@@ -75,6 +75,10 @@ export class PaymentComponent {
       "created_at": new Date(),
       "modified_by": this.cookie.get('userEmail'),
       "modified_at": new Date()
+    }, {
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
     })
     .subscribe((res) => {
       console.log(res);

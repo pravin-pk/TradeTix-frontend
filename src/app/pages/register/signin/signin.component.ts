@@ -31,7 +31,11 @@ export class SigninComponent {
       password: this.signinForm.controls.password.value
     };
 
-    this.http.post(`${environment.BACKEND_URL}/api/users/login`, formValues)
+    this.http.post(`${environment.BACKEND_URL}/api/users/login`, formValues, {
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
+    })
       .subscribe((response: any) => {
         console.log(response);
         
