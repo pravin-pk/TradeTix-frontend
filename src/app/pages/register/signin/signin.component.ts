@@ -38,10 +38,12 @@ export class SigninComponent {
         const token = response.data.token;
         const username = response.data.user.username;
         const userId = response.data.user._id;
+        const userEmail = response.data.user.email
 
         this.cookie.set('token', token);
         this.cookie.set('username', username);
         this.cookie.set('userId', userId);
+        this.cookie.set('userEmail', userEmail)
 
         this.router.navigate(['/dashboard']);
       });
